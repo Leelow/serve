@@ -6,7 +6,7 @@ services:
 install:
   - mkdir files
   - docker build -t serve:latest .
-  - docker run -d -p 127.0.0.1:443:443 -v `pwd`/files:/app/files --name serve serve:latest
+  - docker run -d -p 127.0.0.1:443:443 -v `pwd`/files:/app/files -e SERVE_DELAY=15000 --name serve serve:latest
   - sleep 2 && docker logs serve
 
 script:
@@ -14,3 +14,5 @@ script:
   - echo "yolo" > ./files/test.txt
   - sleep 2 && curl -kI -X GET https://127.0.0.1:443/test.txt | grep "HTTP/1.1 401"             # unauthorized
   - sleep 2 && curl -k -X GET https://127.0.0.1:443/test.txt --user user:password | grep yolo   # get file
+  - sleep 20 && docker ps -q $1 | wc -l                                                         # exit after delay
+  
