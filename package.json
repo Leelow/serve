@@ -1,7 +1,8 @@
 {
   "name": "serve-dir",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static file serving and directory listing",
   "main": "app.js",
   "dependencies": {
     "serve": "6.4.0"
@@ -10,6 +11,14 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leelow/serve.git"
+  },
+  "author": {
+    "name": "Leo Lozach",
+    "email": "leo.lozach@gmail.com",
+    "url": "https://github.com/Leelow"
+  },
+  "license": "MIT"
 }
