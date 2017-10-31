@@ -15,11 +15,11 @@ docker pull leelow29/serve
 
 The default credentials are `user:password`. There are several options to custom with environment variables:
 
-* SERVE_USER        Redefine login (`user` by default).
-* SERVE_PASSWORD    Redefine password (`password` by default).
-* SERVE_INDEX       Display index page (enabled by default).
-* SERVE_CORS        Setup * CORS headers to allow requests from any origin (enabled by default).
-* SERVE_DELAY       Define a delay (in seconds) to stop the container (disabled by default).
+* `SERVE_USER`        Redefine login (`user` by default).
+* `SERVE_PASSWORD`    Redefine password (`password` by default).
+* `SERVE_INDEX`       Display index page (enabled by default).
+* `SERVE_CORS`        Setup * CORS headers to allow requests from any origin (enabled by default).
+* `SERVE_DELAY`       Define a delay (in seconds) to stop the container (disabled by default).
 
 For instance, to disable CORS, set `SERVE_CORS` to `0`.
 
