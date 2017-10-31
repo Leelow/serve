@@ -44,6 +44,6 @@ if (process.env.SERVE_DELAY) {
     console.log('Serve will stop after ' + delay + 'msec')
     setTimeout(function () {
       child.kill('SIGHUP')
-    }, delay)
+    }, delay * 1000)
   }
 }
