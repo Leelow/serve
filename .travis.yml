@@ -4,9 +4,10 @@ services:
   - docker
 
 install:
-  - docker build -t serve:latest .
   - mkdir files
+  - docker build -t serve:latest .
   - docker run -d -p 127.0.0.1:443:443 -v `pwd`/files:/app/files --name serve serve:latest
+  - docker logs serve
 
 script:
   - docker ps | grep serve                                                                              # container
