@@ -24,6 +24,7 @@ Object.keys(options).forEach(function (key) {
 args.push(dir)
 
 const child = spawn('node', args)
+console.log('node ' + args.join(' '))
 
 child.stdout.on('data', function (data) {
   process.stdout(String(data))
