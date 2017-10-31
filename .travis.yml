@@ -10,7 +10,7 @@ install:
   - sleep 5 && docker logs serve
 
 script:
-  - docker ps | grep serve                                                                              # container
+  - docker ps | grep serve                                                                      # container
   - echo "yolo" > ./files/test.txt
-  - sleep 5 && curl --insecure -X GET https://127.0.0.1:443/test.txt | grep "HTTP/1.1 401"              # unauthorized
-  - sleep 5 && curl --insecure -X GET https://127.0.0.1:443/test.txt --user user:password | grep yolo   # get file
+  - sleep 5 && curl -kI -X GET https://127.0.0.1:443/test.txt | grep "HTTP/1.1 401"             # unauthorized
+  - sleep 5 && curl -k -X GET https://127.0.0.1:443/test.txt --user user:password | grep yolo   # get file
