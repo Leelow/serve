@@ -23,6 +23,8 @@ Object.keys(options).forEach(function (key) {
 })
 args.push(dir)
 
+process.stdout.write('node ' + args.join(' ') + '\n')
+
 const child = spawn('node', args)
 
 child.stdout.on('data', function (data) {
@@ -35,10 +37,13 @@ child.stderr.on('data', function (data) {
 
 // stop timer
 if (process.env.SERVE_DELAY) {
-  var delay = parseInt(process.env.SERVER_DELAY)
+  var delay = parseInt(process.env.SERVE_DELAY)
   delay = isNaN(delay) ? 0 : Math.max(0, delay)
 
-  setTimeout(function () {
-    child.kill('SIGHUP')
-  }, delay)
+  if (delay > 0) {
+    console.log('Serve will stop after ' + delay + 'msec')
+    setTimeout(function () {
+      child.kill('SIGHUP')
+    }, delay)
+  }
 }
