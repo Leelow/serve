@@ -4,5 +4,7 @@ npm-debug.log
 .idea
 serve.iml
 
-.gitignore
 readme.md
+
+.gitignore
+.travis.yml
