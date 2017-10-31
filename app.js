@@ -24,7 +24,6 @@ Object.keys(options).forEach(function (key) {
 args.push(dir)
 
 const child = spawn('node', args)
-console.log('node ' + args.join(' '))
 
 child.stdout.on('data', function (data) {
   process.stdout(String(data))
@@ -33,3 +32,13 @@ child.stdout.on('data', function (data) {
 child.stderr.on('data', function (data) {
   throw new Error(String(data))
 })
+
+// stop timer
+if (process.env.SERVE_DELAY) {
+  var delay = parseInt(process.env.SERVER_DELAY)
+  delay = isNaN(delay) ? 0 : Math.max(0, delay)
+
+  setTimeout(function () {
+    child.kill('SIGHUP')
+  }, delay)
+}
